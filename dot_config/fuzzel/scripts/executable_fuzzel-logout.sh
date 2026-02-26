@@ -1,14 +1,14 @@
 #!/bin/bash
 
 SELECTION="$(printf \
-'Lock\nSuspend\nLog out\nReboot\nShutdown' \
+'Shutdown\nReboot\nLog out\nSuspend\nLock' \
 | fuzzel --dmenu)"
 
 case "$SELECTION" in
-    *Lock)      hyprlock ;;
-    *Suspend)   systemctl suspend ;;
-    *Log\ out)  hyprctl dispatch exit ;;
-    *Reboot)    systemctl reboot ;;
     *Shutdown)  systemctl poweroff ;;
+    *Reboot)    systemctl reboot ;;
+    *Log\ out)  hyprctl dispatch exit ;;
+    *Suspend)   systemctl suspend ;;
+    *Lock)      hyprlock ;;
     *) exit ;;
 esac
